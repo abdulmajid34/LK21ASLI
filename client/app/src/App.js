@@ -26,7 +26,7 @@ function App() {
       <GuardProvider guards={[requireLogin]} loading={Loading} error={NotFound}>
         <div className="App">
           <Switch>
-            <GuardedRoute path="/MovieList" meta={{ auth: true }}>
+            <GuardedRoute path="/movieList" meta={{ auth: true }}>
               <MovieList />
             </GuardedRoute>
             <GuardedRoute exact path="/register">
