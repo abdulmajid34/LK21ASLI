@@ -1,7 +1,72 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, useHistory } from 'react-router-dom'
+import axios from 'axios'
+import Swal from 'sweetalert2'
 
 export default function RegisterPage() {
+    const history = useHistory()
+    const [newUser, setNewUser] = useState({
+        username: '',
+        email: '',
+        password: ''
+    })
+
+    const handleChange = (e) => {
+        setNewUser({
+            ...newUser,
+            [e.target.name] : e.target.value
+        })
+    }
+
+    const handleClick = (e) => {
+        e.preventDefault()
+        axios({
+            method: 'POST',
+            url: 'http://localhost:3000/register',
+            data: {
+                username: newUser.username,
+                email: newUser.email,
+                password: newUser.password
+            }
+        })
+        .then((response) => {
+            console.log(response, 'INI DATA REGISTER');
+            if(newUser.username === '' || newUser.email === '' || newUser.password === '') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'please completed your register!',
+                })
+            } else {
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    },
+                })
+
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Register success!',
+                })
+                history.push('/login')
+            }
+        })
+        .catch((err) => {
+            console.log(err);
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'something wrong!',
+            })
+        })
+    }
+
     return (
         <div>
             <div class="min-w-screen min-h-screen BG-IMG flex items-center justify-center px-5 py-5">
@@ -21,7 +86,7 @@ export default function RegisterPage() {
                                         <label for="" class="text-xs font-semibold px-1">Username</label>
                                         <div class="flex">
                                             <div class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"><i class="mdi mdi-email-outline text-gray-400 text-lg"></i></div>
-                                            <input type="email" class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="john doe" />
+                                            <input type="text" onChange={handleChange} name="username" value={newUser.username} required class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="john doe" />
                                         </div>
                                     </div>
                                 </div>
@@ -30,7 +95,7 @@ export default function RegisterPage() {
                                         <label for="" class="text-xs font-semibold px-1">Email</label>
                                         <div class="flex">
                                             <div class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"><i class="mdi mdi-email-outline text-gray-400 text-lg"></i></div>
-                                            <input type="email" class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="johnsmith@example.com" />
+                                            <input type="email" value={newUser.email} onChange={handleChange} name="email" required class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="johnsmith@example.com" />
                                         </div>
                                     </div>
                                 </div>
@@ -39,13 +104,13 @@ export default function RegisterPage() {
                                         <label for="" class="text-xs font-semibold px-1">Password</label>
                                         <div class="flex">
                                             <div class="w-10 z-10 pl-1 text-center pointer-events-none flex items-center justify-center"><i class="mdi mdi-lock-outline text-gray-400 text-lg"></i></div>
-                                            <input type="password" class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="************" />
+                                            <input type="password" name="password" value={newUser.password} onChange={handleChange} required class="w-full -ml-10 pl-10 pr-3 py-2 rounded-lg border-2 border-gray-200 outline-none focus:border-indigo-500" placeholder="************" />
                                         </div>
                                     </div>
                                 </div>
                                 <div class="flex -mx-3">
                                     <div class="w-full px-3 mb-5">
-                                        <button class="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold">REGISTER NOW</button>
+                                        <button type="button" onClick={(e) => handleClick(e)} class="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold">REGISTER NOW</button>
                                     </div>
                                 </div>
 
