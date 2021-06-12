@@ -74,20 +74,20 @@ export default function LoginPage() {
                                 
                             </div>
                             <div class="relative w-full mb-3">
-                                <input type="password" name="password" class="border-0 p-4 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full" placeholder="Password" style= {{ transition: "all 0.15s ease 0s" }} />
+                                <input type="password" name="password" value={login.password} onChange={handleChange} required class="border-0 p-4 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full" placeholder="Password" style= {{ transition: "all 0.15s ease 0s" }} />
                                
                             </div>
                             <div class="text-center mt-6">
                                 <input type="submit" name="signin" id="signin" value="Sign In" class="p-3 rounded-lg bg-purple-600 outline-none text-white shadow w-32 justify-center focus:bg-purple-700 hover:bg-purple-500" />
                             </div>  
                             <hr className="my-6 border-gray-300 w-full" />
-                            <p className="mt-8 ml-24">Need an account?
                             <Link to="/register">
+                            <p className="mt-8 ml-24">Need an account?
                                 <p className=" ml-14 -mt-6 text-center text-blue-400 hover:text-blue-600 cursor-pointer">
                                     Register
                                 </p>
-                            </Link>
                             </p>
+                            </Link>
                             <Link to="/">
                                 <p className=" mt-10 text-center text-gray-400 hover:text-gray-600 cursor-pointer">
                                     Back to Landing Page
