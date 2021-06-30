@@ -12,6 +12,7 @@ router.get('/movies/now_playing', movieController.now_playing)
 router.get('/movies/getDetail/:id', movieController.getDetail)
 router.get('/movies/upcoming', movieController.upcoming)
 router.get('/movies/top_rated', movieController.topRated)
+router.get('/movies/popular', movieController.popular)
 
 router.get('/movies/watchList', watchListController.showWatchList)
 router.post('/movies/watchList', watchListController.addWatchList)
