@@ -5,7 +5,8 @@ import {
     SHOWMOVIES_UPCOMING,
     SHOWLOADING,
     SHOWERROR,
-    SHOWWATCHLIST
+    SHOWWATCHLIST,
+    SHOWADDWATCHLIST
 } from '../actions/actionType'
 
 const initialState = {
@@ -29,6 +30,8 @@ function reducer(state = initialState, action) {
             return { ...state, moviesTop_rated: payload }
         case SHOWMOVIES_UPCOMING:
             return { ...state, moviesUpcoming: payload }
+        case SHOWADDWATCHLIST:
+            return { ...state, watchList: state.watchList.concat(payload) }
         default:
         return state
     }

@@ -1,18 +1,46 @@
 import React from 'react';
+import { Link, useHistory } from 'react-router-dom'
+import Swal from 'sweetalert2'
 
 const Navbar = () => {
+    const history = useHistory()
+
+    const handleLogout = () => {
+        Swal.fire({
+			title: 'Are you sure?',
+			text: "You won't be able to revert this!",
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: 'Yes, Logout'
+		  }).then((result) => {
+			if (result.isConfirmed) {
+				localStorage.clear()
+				history.push('/')
+			  Swal.fire(
+				'Logout!',
+				'See You Again!',
+				'success'
+			  )
+			}
+		})
+    }
+
     return (
-        <div>
+        <div className="relative">
             <nav
-            class="flex items-center justify-between flex-wrap bg-white py-4 lg:px-12 shadow border-solid border-t-2 border-blue-700">
-            <div class="flex justify-between lg:w-auto w-full lg:border-b-0 pl-6 pr-2 border-solid border-b-2 border-gray-300 pb-5 lg:pb-0">
+            className=" flex items-center justify-between w-screen flex-wrap bg-blue-500 lg:px-12 shadow border-solid border-t-2 border-blue-700">
+            <div class="flex justify-between lg:w-auto w-full lg:border-b-0 pl-6 pr-2 border-solid border-b-2 border-gray-300">
                 <div class="flex items-center flex-shrink-0 text-gray-800 mr-16">
-                    <span class="font-semibold text-xl tracking-tight">LK21ASLI</span>
+                    <Link to="/movieList">
+                        <span class="font-semibold text-xl tracking-tight text-white">LK21ASLI</span>
+                    </Link>
                 </div>
                 <div class="block lg:hidden ">
                     <button
                         id="nav"
-                        class="flex items-center px-3 py-2 border-2 rounded text-blue-700 border-blue-700 hover:text-blue-700 hover:border-blue-700">
+                        class="flex items-center px-3 py-2 border-2 rounded text-white border-blue-700 hover:text-blue-700 hover:border-blue-700">
                         <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title>
                             <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/>
                         </svg>
@@ -20,20 +48,26 @@ const Navbar = () => {
                 </div>
             </div>
         
-            <div class="menu w-full lg:block flex-grow lg:flex lg:items-center lg:w-auto lg:px-3 px-8">
-                <div class="text-md font-bold text-blue-700 lg:flex-grow">
-                    <a href="#responsive-header"
-                    class="block mt-4 lg:inline-block lg:mt-0 hover:text-white px-4 py-2 rounded hover:bg-blue-700 mr-2">
-                        Movies
-                    </a>
-                    <a href="#responsive-header"
-                    class=" block mt-4 lg:inline-block lg:mt-0 hover:text-white px-4 py-2 rounded hover:bg-blue-700 mr-2">
-                        Genre
-                    </a>
-                    <a href="#responsive-header"
-                    class="block mt-4 lg:inline-block lg:mt-0 hover:text-white px-4 py-2 rounded hover:bg-blue-700 mr-2">
-                        WatchList
-                    </a>
+            <div class="menu w-full flex-grow lg:flex lg:items-center lg:w-auto lg:px-3 px-8">
+                <div class="text-md font-bold text-white lg:flex-grow">
+                    <Link to="/movieList">
+                        <p href="#responsive-header"
+                        class="block mt-4 lg:inline-block mb-4 hover:text-white px-4 py-2 rounded hover:bg-blue-700 mr-2">
+                            Movies
+                        </p>
+                    </Link>
+                    <Link>
+                        <p href="#responsive-header"
+                        class=" block mt-4 lg:inline-block lg:mt-0 hover:text-white px-4 py-2 rounded hover:bg-blue-700 mr-2">
+                            Genre
+                        </p>
+                    </Link>
+                    <Link to="/watchList">
+                        <p href="#responsive-header"
+                        class="block mt-4 lg:inline-block lg:mt-0 hover:text-white px-4 py-2 rounded hover:bg-blue-700 mr-2">
+                            WatchList
+                        </p>
+                    </Link>
                 </div>
                 <div class="relative mx-auto text-gray-600 lg:block hidden">
                     <input
@@ -46,8 +80,17 @@ const Navbar = () => {
                     </button>
                 </div>
                 <div class="flex ">
-                    <a 
-                    class=" block text-md px-4  ml-2 py-2 rounded text-blue-700 font-bold hover:text-white mt-4 hover:bg-blue-700 lg:mt-0">logout</a>
+                    <p
+                    onClick={handleLogout}
+                    class="block text-md px-4 mb-4 ml-2 py-2 rounded text-white font-bold hover:text-white cursor-pointer mt-4 hover:bg-blue-700 lg:mt-0">
+                        logout
+                    </p>
+                </div>
+                <div class="flex ">
+                    <p
+                    class=" block text-md px-4 mb-4 ml-2 py-2 rounded text-white font-bold hover:text-white mt-4 hover:bg-blue-700 lg:mt-0">
+                        {localStorage.username}
+                    </p>
                 </div>
             </div>
         </nav>

@@ -8,7 +8,7 @@ import {
 } from './actionType'
 // import axios from 'axios'
 
-const BASE_URL = 'http://localhost:3000'
+// const BASE_URL = 'http://localhost:3000'
 
 export function upcoming(payload) {
     return { type: SHOWMOVIES_UPCOMING, payload: payload }

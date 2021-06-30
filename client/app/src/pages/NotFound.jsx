@@ -1,10 +1,11 @@
 import React from 'react'
+import Logo from '../assets/404.svg'
 
 export default function NotFound() {
     return (
-        <div>
-            <h1>404 Data is not Found</h1>
-        </div>
+        <div className="h-screen w-screen bg-yellow-400 flex flex-col justify-center items-center">
+			<img src={Logo} className="w-1/6 animate-pulse" alt="" />
+		</div>
     )
 }
 

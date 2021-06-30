@@ -6,6 +6,9 @@ import LoginPage from './pages/LoginPage'
 import MovieList from './pages/MovieList'
 import NotFound from './pages/NotFound'
 import LandingPage from './pages/LandingPage'
+import DetailMovies from './pages/DetailMovies'
+import WatchList from './pages/WatchList'
+// import Navbar from './components/Navbar'
 import { GuardProvider, GuardedRoute } from 'react-router-guards';
 import { BrowserRouter as Router, Switch } from "react-router-dom";
 
@@ -34,6 +37,12 @@ function App() {
             </GuardedRoute>
             <GuardedRoute exact path="/login">
               <LoginPage />
+            </GuardedRoute>
+            <GuardedRoute exact path="/watchList">
+              <WatchList />
+            </GuardedRoute>
+            <GuardedRoute exact path="/movies/detail/:id">
+              <DetailMovies />
             </GuardedRoute>
             <GuardedRoute exact path="/">
 							<LandingPage />

@@ -22,7 +22,7 @@ export default function LoginPage() {
         e.preventDefault()
         axios({
             method: 'POST',
-            url: 'http://localhost:3000/login',
+            url: 'http://localhost:4000/login',
             data: {
                 email: login.email,
                 password: login.password
@@ -75,7 +75,6 @@ export default function LoginPage() {
                             </div>
                             <div class="relative w-full mb-3">
                                 <input type="password" name="password" value={login.password} onChange={handleChange} required class="border-0 p-4 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full" placeholder="Password" style= {{ transition: "all 0.15s ease 0s" }} />
-                               
                             </div>
                             <div class="text-center mt-6">
                                 <input type="submit" name="signin" id="signin" value="Sign In" class="p-3 rounded-lg bg-purple-600 outline-none text-white shadow w-32 justify-center focus:bg-purple-700 hover:bg-purple-500" />
