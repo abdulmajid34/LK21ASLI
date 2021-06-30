@@ -15,11 +15,11 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   WatchList.init({
-    title: DataTypes.STRING,
-    poster_path: DataTypes.STRING,
-    overview: DataTypes.STRING,
-    popularity: DataTypes.INTEGER,
-    release_date: DataTypes.STRING
+    title: DataTypes.TEXT,
+    poster_path: DataTypes.TEXT,
+    overview: DataTypes.TEXT,
+    popularity: DataTypes.FLOAT,
+    release_date: DataTypes.TEXT
   }, {
     sequelize,
     modelName: 'WatchList',

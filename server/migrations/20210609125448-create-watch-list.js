@@ -18,19 +18,19 @@ module.exports = {
         onUpdate: "CASCADE"
       },
       title: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       poster_path: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       overview: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       popularity: {
-        type: Sequelize.INTEGER
+        type: Sequelize.FLOAT
       },
       release_date: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       createdAt: {
         allowNull: false,

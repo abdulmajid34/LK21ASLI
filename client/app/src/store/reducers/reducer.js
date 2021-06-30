@@ -30,6 +30,9 @@ function reducer(state = initialState, action) {
             return { ...state, moviesTop_rated: payload }
         case SHOWMOVIES_UPCOMING:
             return { ...state, moviesUpcoming: payload }
+        case SHOWWATCHLIST:
+            console.log(payload, 'INI DI REDUCER');
+            return { ...state, watchList: payload }
         case SHOWADDWATCHLIST:
             return { ...state, watchList: state.watchList.concat(payload) }
         default:
