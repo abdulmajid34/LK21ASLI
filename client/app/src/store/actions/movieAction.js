@@ -8,8 +8,6 @@ import {
 } from './actionType'
 // import axios from 'axios'
 
-// const BASE_URL = 'http://localhost:3000'
-
 export function upcoming(payload) {
     return { type: SHOWMOVIES_UPCOMING, payload: payload }
 }
@@ -32,7 +30,7 @@ export function setError(payload) {
 export function fetchMoviesUpcoming(page) {
     return (dispatch) => {
         dispatch(setLoading(true))
-        fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=88bd736dd382b7b9688a1d6eaba2b7cc&language=en-US&page=${page}`)
+        fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=88bd736dd382b7b9688a1d6eaba2b7cc&language=en-US&page=${page}`)
         .then((res) => res.json())
         .then((data) => {
             dispatch(upcoming(data.results))

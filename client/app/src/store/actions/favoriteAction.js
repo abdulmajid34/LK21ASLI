@@ -1,11 +1,10 @@
 import {
     SHOWWATCHLIST,
-    SHOWADDWATCHLIST,
     SHOWLOADING,
     SHOWERROR,
-    SHOWDELETEWATCHLIST
 } from './actionType'
 import axios from 'axios'
+import Swal from 'sweetalert2'
 
 const BASE_URL = `http://localhost:4000`
 
@@ -18,12 +17,8 @@ export function setError(payload) {
 export function watchList(payload) {
     return { type: SHOWWATCHLIST, payload }
 }
-// export function addWatchList(payload) {
-//     return { type: SHOWADDWATCHLIST, payload }
-// }
-export function deleteWatchList(payload) {
-    return { type: SHOWDELETEWATCHLIST, payload }
-}
+
+
 
 export function newWatchList(data) {
     console.log(data, 'INI ACTION');
@@ -59,19 +54,31 @@ export function newWatchList(data) {
     }
 }
 
-export function fetchWatchList() {
+export function deleteWatchList(id) {
     return (dispatch) => {
-        dispatch(setLoading(true))
-        fetch(`${BASE_URL}/movies/watchList`, {
-            headers: {
-                access_token: localStorage.access_token
-            }
-        })
-        .then((res) => res.json())
-        .then((data) => {
-            console.log(data,'INI DARI ACTION NYA');
-            dispatch(watchList(data))
-        })
+        axios({
+			method: 'DELETE',
+			url: `${BASE_URL}/movies/watchList/${id}`,
+			headers: { access_token: localStorage.access_token },
+		}).then(({ data }) => {
+			Swal.fire({
+				title: 'Are you sure?',
+				text: 'You will not be able to return this Movies!',
+				icon: 'warning',
+				showCancelButton: true,
+				confirmButtonColor: '#3085d6',
+				cancelButtonColor: '#d33',
+				confirmButtonText: 'delete',
+			}).then((result) => {
+				if (result.isConfirmed) {
+					Swal.fire(
+						'Deleted!',
+						'Your card has been deleted successfully',
+						'success'
+					)
+				}
+			})
+		})
         .catch((err) => {
             console.log(err);
             dispatch(setError(err))

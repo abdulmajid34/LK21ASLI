@@ -32,17 +32,6 @@ function WatchList() {
             setWatchList(res)
         })
     }, [])
-    // const [dataWatchList, loading, error] = useFetch(`http://localhost:4000/movies/watchList`)
-    // console.log(dataWatchList, 'INI DATA NYA WatchList');
-    // const dataWatchList = useSelector(state => state.watchList)
-    // console.log(dataWatchList, 'DATA WATCHLIST');
-
-    // if(loading) {
-    //     return <Loading />
-    // }
-    // if(error) {
-    //     return <NotFound />
-    // }
 
     return (
         <div>
