@@ -30,10 +30,61 @@ export function setError(payload) {
 export function fetchMoviesUpcoming(page) {
     return (dispatch) => {
         dispatch(setLoading(true))
-        fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=88bd736dd382b7b9688a1d6eaba2b7cc&language=en-US&page=${page}`)
+        fetch(`https://api.themoviedb.org/3/movie/upcoming?api_key=88bd736dd382b7b9688a1d6eaba2b7cc&language=en-US&page=${page}`)
         .then((res) => res.json())
         .then((data) => {
             dispatch(upcoming(data.results))
+        })
+        .catch((err) => {
+            dispatch(setError(err))
+        })
+        .finally((_) => {
+            dispatch(setLoading(false))
+        })
+    }
+}
+
+export function fetchMoviesPopular(page) {
+    return (dispatch) => {
+        dispatch(setLoading(true))
+        fetch(`https://api.themoviedb.org/3/movie/popular?api_key=88bd736dd382b7b9688a1d6eaba2b7cc&language=en-US&page=${page}`)
+        .then((res) => res.json())
+        .then((data) => {
+            dispatch(popular(data.results))
+        })
+        .catch((err) => {
+            dispatch(setError(err))
+        })
+        .finally((_) => {
+            dispatch(setLoading(false))
+        })
+    }
+}
+
+export function fetchMoviesNowPlaying(page) {
+    return (dispatch) => {
+        dispatch(setLoading(true))
+        fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=88bd736dd382b7b9688a1d6eaba2b7cc&language=en-US&page=${page}`)
+        .then((res) => res.json())
+        .then((data) => {
+            dispatch(now_playing(data.results))
+        })
+        .catch((err) => {
+            dispatch(setError(err))
+        })
+        .finally((_) => {
+            dispatch(setLoading(false))
+        })
+    }
+}
+
+export function fetchMoviesTopRated(page) {
+    return (dispatch) => {
+        dispatch(setLoading(true))
+        fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=88bd736dd382b7b9688a1d6eaba2b7cc&language=en-US&page=${page}`)
+        .then((res) => res.json())
+        .then((data) => {
+            dispatch(top_rated(data.results))
         })
         .catch((err) => {
             dispatch(setError(err))

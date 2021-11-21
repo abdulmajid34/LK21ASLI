@@ -1,9 +1,12 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom'
 import Swal from 'sweetalert2'
 
 const Navbar = () => {
     const history = useHistory()
+    const dispatch = useDispatch();
+    // const moviesUpcoming = useSelector(state => state.moviesUpcoming)
 
     const handleLogout = () => {
         Swal.fire({
@@ -25,6 +28,10 @@ const Navbar = () => {
 			  )
 			}
 		})
+    }
+
+    const fetchApiUpcoming = () => {
+        
     }
 
     return (
@@ -50,18 +57,24 @@ const Navbar = () => {
         
             <div class="menu w-full flex-grow lg:flex lg:items-center lg:w-auto lg:px-3 px-8">
                 <div class="text-md font-bold text-white lg:flex-grow">
-                    <Link to="/movieList">
-                        <p href="#responsive-header"
-                        class="block mt-4 lg:inline-block mb-4 hover:text-white px-4 py-2 rounded hover:bg-blue-700 mr-2">
-                            Movies
-                        </p>
+                    <Link to="/upcoming">
+                        <div class="block mt-4 lg:inline-block mb-4 hover:text-white px-4 py-2 rounded hover:bg-blue-700 mr-2 hover: cursor-pointer">
+                                <span>
+                                    Upcoming
+                                </span>
+                        </div>
                     </Link>
-                    <Link>
-                        <p href="#responsive-header"
-                        class=" block mt-4 lg:inline-block lg:mt-0 hover:text-white px-4 py-2 rounded hover:bg-blue-700 mr-2">
-                            Genre
-                        </p>
+                    <Link to="/popular">
+                        <div class="block mt-4 lg:inline-block mb-4 hover:text-white px-4 py-2 rounded hover:bg-blue-700 mr-2 hover: cursor-pointer">
+                            <span>Popular</span>
+                        </div>
                     </Link>
+                    <Link to="/topRated">
+                        <div class="block mt-4 lg:inline-block mb-4 hover:text-white px-4 py-2 rounded hover:bg-blue-700 mr-2 hover: cursor-pointer">
+                            <span>Top Rating</span>
+                        </div>
+                    </Link>
+                    
                     <Link to="/watchList">
                         <p href="#responsive-header"
                         class="block mt-4 lg:inline-block lg:mt-0 hover:text-white px-4 py-2 rounded hover:bg-blue-700 mr-2">
@@ -89,7 +102,7 @@ const Navbar = () => {
                 <div class="flex ">
                     <p
                     class=" block text-md px-4 mb-4 ml-2 py-2 rounded text-white font-bold hover:text-white mt-4 hover:bg-blue-700 lg:mt-0">
-                        {localStorage.username}
+                        Hello, {localStorage.username}
                     </p>
                 </div>
             </div>

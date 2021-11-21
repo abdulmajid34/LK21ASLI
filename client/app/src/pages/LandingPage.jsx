@@ -11,7 +11,7 @@ export default function LandingPage() {
 						{/* <img className=" mx-auto w-5/6" src={Logo} alt="LogoCat" /> */}
 						<h1 className="text-6xl text-white">LK21ASLI</h1>
 						<Link to="/login">
-							<button className=" bg-yellow-500 hover:bg-yellow-600 font-bold py-5 ml-16 px-7 rounded-2xl w-32 text-white m-5">
+							<button className=" bg-yellow-500 hover:bg-yellow-600 font-bold py-3 ml-16 px-7 rounded-2xl w-32 text-white m-5">
 								Let's Go
 							</button>
 						</Link>
