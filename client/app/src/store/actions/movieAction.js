@@ -20,11 +20,31 @@ export function now_playing(payload) {
 export function top_rated(payload) {
     return { type: SHOWMOVIES_TOP_RATED, payload: payload }
 }
+export function searchMovie(payload) {
+    return { type: 'searchResult/setSearch', payload: payload }
+}
 export function setLoading(payload) {
     return { type: SHOWLOADING, payload: payload }
 }
 export function setError(payload) {
     return { type: SHOWERROR, payload: payload }
+}
+
+export function fetchSearchMovies(search) {
+    return (dispatch) => {
+        dispatch(setLoading(true))
+        fetch(`https://api.themoviedb.org/3/search/movie?api_key=88bd736dd382b7b9688a1d6eaba2b7cc&language=en-US&query=${search}&page=1&include_adult=false`)
+        .then((res) => res.json())
+        .then((data) => {
+            dispatch(searchMovie(data.results))
+        })
+        .catch((err) => {
+            dispatch(setError(err))
+        })
+        .finally((_) => {
+            dispatch(setLoading(false))
+        })
+    }
 }
 
 export function fetchMoviesUpcoming(page) {

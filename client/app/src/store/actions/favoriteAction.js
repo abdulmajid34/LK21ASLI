@@ -41,9 +41,7 @@ export function newWatchList(data) {
             }
         })
         .then((response) => {
-            // console.log(response, 'ini dari favorites');
-            console.log('yeyeyeyeyeyyeyeyeyeyeyeyey berhasil');
-            // dispatch(addWatchList(response))
+            
         })
         .catch((err) => {
             dispatch(setError(err))

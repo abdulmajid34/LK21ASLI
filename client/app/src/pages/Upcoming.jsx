@@ -51,10 +51,10 @@ function Upcoming() {
                 }
             </div>
             <div className=" flex flex-row justify-center mt-4">
-            <button type="button" onClick={backButton} class="rounded px-3 py-2 m-1 border-b-4 border-l-2 shadow-lg bg-blue-800 border-blue-900 text-white">
+            <button type="button" onClick={backButton} className="rounded px-3 py-2 m-1 border-b-4 border-l-2 shadow-lg bg-blue-800 border-blue-900 text-white">
                 Back
             </button>
-            <button type="button" onClick={nextButton} class="rounded px-3 py-2 m-1 border-b-4 border-l-2 shadow-lg bg-blue-800 border-blue-900 text-white">
+            <button type="button" onClick={nextButton} className="rounded px-3 py-2 m-1 border-b-4 border-l-2 shadow-lg bg-blue-800 border-blue-900 text-white">
                 Next
             </button>
             </div>

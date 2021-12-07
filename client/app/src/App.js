@@ -8,6 +8,7 @@ import NotFound from './pages/NotFound'
 import LandingPage from './pages/LandingPage'
 import DetailMovies from './pages/DetailMovies'
 import WatchList from './pages/WatchList'
+import MovieSearch from './pages/MovieSearch'
 // import Navbar from './components/Navbar'
 import { GuardProvider, GuardedRoute } from 'react-router-guards';
 import { BrowserRouter as Router, Switch } from "react-router-dom";
@@ -46,6 +47,9 @@ function App() {
             </GuardedRoute>
             <GuardedRoute exact path="/register">
               <RegisterPage />
+            </GuardedRoute>
+            <GuardedRoute exact path="/movieSearch">
+              <MovieSearch />
             </GuardedRoute>
             <GuardedRoute exact path="/login">
               <LoginPage />

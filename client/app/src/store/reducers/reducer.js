@@ -14,6 +14,7 @@ const initialState = {
     moviesPopular: [],
     moviesTop_rated: [],
     moviesNow_playing: [],
+    resultSearch: [],
     watchList: [],
     loading: false,
     error: null
@@ -22,6 +23,8 @@ const initialState = {
 function reducer(state = initialState, action) {
     let { type, payload } = action
     switch (type) {
+        case 'searchResult/setSearch':
+            return { ...state, resultSearch: payload }
         case SHOWMOVIES_NOW_PLAYING:
             return { ...state, moviesNow_playing: payload }
         case SHOWMOVIES_POPULAR:
@@ -31,7 +34,6 @@ function reducer(state = initialState, action) {
         case SHOWMOVIES_UPCOMING:
             return { ...state, moviesUpcoming: payload }
         case SHOWWATCHLIST:
-            console.log(payload, 'INI DI REDUCER');
             return { ...state, watchList: payload }
         case SHOWADDWATCHLIST:
             return { ...state, watchList: state.watchList.concat(payload) }
