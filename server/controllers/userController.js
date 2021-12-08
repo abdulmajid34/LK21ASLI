@@ -34,7 +34,7 @@ class UserController {
                         id: data.id,
                         email: data.email
                     })
-                    res.status(200).json({ id: data.id, email: data.email, access_token: token })
+                    res.status(200).json({ id: data.id, email: data.email, username: data.username, access_token: token })
                 } else {
                     throw { name: 'Unauthorize'}
                 }

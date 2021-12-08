@@ -22,7 +22,8 @@ class WatchListController {
             title: req.body.title,
             poster_path: req.body.poster_path,
             overview: req.body.overview,
-            popularity: req.body.popularity,
+            popularity: +req.body.popularity,
+            release_date: req.body.release_date,
             UserId: req.nowLogged.id,
         };
         WatchList.findOne({
@@ -31,7 +32,7 @@ class WatchListController {
             }
         })
         .then((data) => {
-            // console.log(data, 'INI DATA NYA');
+            console.log(data, 'INI DATA NYA');
             if(!data) {
                 return WatchList.create(newData)
             }else {
