@@ -8,9 +8,13 @@ import NotFound from './pages/NotFound'
 import LandingPage from './pages/LandingPage'
 import DetailMovies from './pages/DetailMovies'
 import WatchList from './pages/WatchList'
+import MovieSearch from './pages/MovieSearch'
 // import Navbar from './components/Navbar'
 import { GuardProvider, GuardedRoute } from 'react-router-guards';
 import { BrowserRouter as Router, Switch } from "react-router-dom";
+import Upcoming from './pages/Upcoming';
+import Popular from './pages/Popular';
+import TopRated from './pages/TopRated';
 
 const requireLogin = (to, from, next) => {
   if (to.meta.auth) {
@@ -32,8 +36,20 @@ function App() {
             <GuardedRoute path="/movieList" meta={{ auth: true }}>
               <MovieList />
             </GuardedRoute>
+            <GuardedRoute exact path="/upcoming">
+              <Upcoming />
+            </GuardedRoute>
+            <GuardedRoute exact path="/popular">
+              <Popular />
+            </GuardedRoute>
+            <GuardedRoute exact path="/topRated">
+              <TopRated />
+            </GuardedRoute>
             <GuardedRoute exact path="/register">
               <RegisterPage />
+            </GuardedRoute>
+            <GuardedRoute exact path="/movieSearch">
+              <MovieSearch />
             </GuardedRoute>
             <GuardedRoute exact path="/login">
               <LoginPage />

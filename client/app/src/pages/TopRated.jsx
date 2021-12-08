@@ -1,23 +1,26 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { fetchMoviesNowPlaying } from '../store/actions/movieAction'
-import Loading from '../pages/Loading'
+import { fetchMoviesTopRated } from '../store/actions/movieAction'
+import Loading from './Loading'
 import Navbar from '../components/Navbar'
 import MovieCard from '../components/MovieCard'
 
-export default function MovieList() {
+function Top_rated() {
     const dispatch = useDispatch()
     const [page, setPage] = useState(1)
-    
-    const moviesNowPlaying = useSelector(state => state.moviesNow_playing)
+
+    // state data movies
+    const moviesTopRated = useSelector(state => state.moviesTop_rated)
 
     const loading = useSelector(state => state.loading)
     const error = useSelector(state => state.error)
 
+    // render data movies upcoming
     useEffect(() => {
-        dispatch(fetchMoviesNowPlaying(page))
+        dispatch(fetchMoviesTopRated(page))
     }, [page])
 
+    // handle button pagination
     const nextButton = () => {
         setPage(page + 1)
     }
@@ -40,11 +43,11 @@ export default function MovieList() {
         <div>
             <Navbar />
             <div className="flex flex-row justify-center px-4 py-2"> 
-                <h1 className=" text-5xl text-blue-800">Now Playing</h1>
+                <h1 className=" text-5xl text-blue-800">Top Rating</h1>
             </div>
             <div className="main">
                 {
-                    moviesNowPlaying.map((movie, idx) => <MovieCard key={idx} movie={movie} />)
+                    moviesTopRated.map((movie, idx) => <MovieCard key={idx} movie={movie} />)
                 }
             </div>
             <div className=" flex flex-row justify-center mt-4">
@@ -59,3 +62,4 @@ export default function MovieList() {
     )
 }
 
+export default Top_rated
