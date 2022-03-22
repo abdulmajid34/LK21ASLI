@@ -2,7 +2,7 @@
   "development": {
     "username": "postgres",
     "password": "0d4y3xpl01t",
-    "database": "Layarkaca21ASLI",
+    "database": "layarkaca21_ASLI",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
