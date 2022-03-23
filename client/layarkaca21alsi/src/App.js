@@ -1,15 +1,37 @@
 import logo from './logo.svg';
 import './App.css';
+import {
+  Routes,
+  Route,
+  Navigate,
+  useLocation
+} from 'react-router-dom'
+import LandingPage from './pages/LandingPage';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
+import HomePage from './pages/HomePage';
+import useAuth from './useAuth';
+
+function RequireAuth({ children }) {
+  const { authed } = useAuth()
+  const location = useLocation()
+
+  return authed === true ? children : <Navigate to='/login' replace state={{ path: location.pathname }} />
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>hello world</h1>
-      </header>
-    </div>
-  );
+    <Routes>
+      <Route path='/' element={<LandingPage />} />
+      <Route path='/login' element={<LoginPage />} />
+      <Route path='/register' element={<RegisterPage />} />
+      <Route path='/home' element={
+        <RequireAuth>
+          <HomePage />
+        </RequireAuth>
+      } />
+    </Routes>
+  )
 }
 
 export default App;
