@@ -5,7 +5,7 @@ function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className=' w-full fixed top-0 left-0'>
+    <div className=' w-full top-0 left-0'>
         <div className=' items-center justify-between md:flex bg-[#e50914] py-4 md:px-10 px-7'>
             <div className='font-bold text-2xl cursor-pointer flex items-center text-white'>
                 LK21ASLI
@@ -17,7 +17,7 @@ function Navbar() {
 
             <div onClick={() => setIsOpen(false)} className={ ` ${isOpen ? 'block' : 'hidden'} bg-opacity-50 z-[-1] transition-all duration-1000 ease-in-out fixed w-full h-full top-16 mt-[-5px] left-0`}></div>
 
-            <ul className={` sm:flex-row md:flex md:items-center md:pb-0 pb-12 absolute md:static lg:bg-none bg-[#e50914] md:z-auto z-[-1] left-0 w-3/6 md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${isOpen ? 'opacity-100' : 'left-[-490px]'} `}>
+            <ul className={` sm:flex-row md:flex md:items-center md:pb-0 pb-12 md:static lg:bg-none bg-[#e50914] md:z-auto z-[-1] left-0 w-3/6 md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${isOpen ? 'opacity-100' : 'left-[-490px]'} `}>
                 {/* <div className='w-full flex-grow lg:flex lg:items-center lg:w-auto lg:px-14 px-8'> */}
                     <li className=' md:ml-8 text-xl md:my-0 my-7'>
                         <span className='text-rose-200 hover:text-white duration-500'>
