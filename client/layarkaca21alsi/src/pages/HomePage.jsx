@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Navbar from '../components/Navbar'
+import Navbar from '../components/Navbar';
 import { fetch_now_playing } from '../store/actions/actionMovies'
 import Loading from './Loading';
 import Error from './Error';
 import MovieCard from '../components/MovieCard';
+import NavbarSecond from '../template/NavbarSecond';
 
 
 function HomePage() {
@@ -27,18 +28,19 @@ function HomePage() {
     return <Error />
   }
   return (
-    <div>
+    <>
+      {/* <NavbarSecond /> */}
       <Navbar />
-      <div className='ml-40 my-12'>
+      <div className='w-full flex items-center px-10 py-7'>
         <span className=' border-b-2 border-yellow-700'></span>
-        <h2 className=' text-5xl text-yellow-600'>Now Playing</h2>
+        <h2 className=' lg:ml-20 text-5xl text-yellow-600'>Now Playing</h2>
       </div>
       <div className="holder mx-auto w-10/12 grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
           {
               now_playing?.map((movie, idx) => <MovieCard key={idx} movie={movie} />)
           }
       </div>
-    </div>
+    </>
   )
 }
 
