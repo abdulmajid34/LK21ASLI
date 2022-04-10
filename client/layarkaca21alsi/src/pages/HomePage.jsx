@@ -6,6 +6,7 @@ import Loading from './Loading';
 import Error from './Error';
 import MovieCard from '../components/MovieCard';
 import NavbarSecond from '../template/NavbarSecond';
+import Banner from '../components/Banner';
 
 
 function HomePage() {
@@ -31,6 +32,7 @@ function HomePage() {
     <>
       {/* <NavbarSecond /> */}
       <Navbar />
+      {/* <Banner /> */}
       <div className='w-full flex items-center px-10 py-7'>
         <span className=' border-b-2 border-yellow-700'></span>
         <h2 className=' lg:ml-20 text-5xl text-yellow-600'>Now Playing</h2>

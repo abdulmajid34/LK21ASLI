@@ -11,6 +11,7 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import HomePage from './pages/HomePage';
 import useAuth from './useAuth';
+import MovieDetail from './pages/MovieDetail';
 
 function RequireAuth({ children }) {
   const { authed } = useAuth()
@@ -28,6 +29,11 @@ function App() {
       <Route path='/home' element={
         <RequireAuth>
           <HomePage />
+        </RequireAuth>
+      } />
+      <Route path='/movies/details/:id' element={
+        <RequireAuth>
+          <MovieDetail />
         </RequireAuth>
       } />
     </Routes>
