@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import useFetch from '../hooks/useFetch';
 import Loading from './Loading';
 import Error from './Error';
+import Comments from '../components/Comments';
 
 function MovieDetail() {
     const { id } = useParams();
@@ -55,7 +56,7 @@ function MovieDetail() {
                         <button class="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">Trailer <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 my-1 mx-1" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
                         </svg></button>
-                        <span class="flex ml-4 py-2 px-6 focus:outline-none cursor-pointer">
+                        <span onClick={() => setComment(!showComment)} class="flex ml-4 py-2 px-6 focus:outline-none cursor-pointer">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mx-1 text-yellow-600" viewBox="0 0 20 20" fill="currentColor">
                             <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z" />
                             <path d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z" />
@@ -65,6 +66,11 @@ function MovieDetail() {
                         </div>
                     </div>
                     </div>
+                    {
+                        showComment ? (
+                            <Comments />
+                        ) : null
+                    }
                 </div>
             </section>
         </div>
