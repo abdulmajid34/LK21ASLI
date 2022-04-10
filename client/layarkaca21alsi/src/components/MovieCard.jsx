@@ -13,19 +13,7 @@ function MovieCard(props) {
         navigate(`/movies/details/${id}`)
     }
 
-    const addWatchlist = (movies) => {
-        // let count = 0;
-        // watchlist.forEach(watch => {
-        //     if(+watch.id === +movies.id) {
-        //         count++
-        //     }
-        // })
-        // if(count === 0 && movies.length !== 0) {
-        //     dispatch(newWatchlist(movies))
-        // } else {
-        //     console.log("gagal add");
-        // }
-    }
+    
 
 
     return (
