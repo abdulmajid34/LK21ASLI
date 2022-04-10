@@ -5,11 +5,15 @@ import useFetch from '../hooks/useFetch';
 import Loading from './Loading';
 import Error from './Error';
 import Comments from '../components/Comments';
+import { useSelector, useDispatch } from 'react-redux';
+import { newWatchlist } from '../store/actions/watchlistAction';
 
 function MovieDetail() {
+    const dispatch = useDispatch()
     const { id } = useParams();
     const [showComment, setComment] = useState(false);
     const [detailMovies, loading, error] = useFetch(`https://api.themoviedb.org/3/movie/${id}?api_key=88bd736dd382b7b9688a1d6eaba2b7cc&language=en-US`)
+    const watchlist = useSelector(state => state.watchlist)
 
     if(loading) {
         return <Loading />
@@ -17,6 +21,21 @@ function MovieDetail() {
     if(error) {
         return <Error />
     }
+
+    const addWatchlist = (movies) => {
+        let count = 0;
+        watchlist.forEach(watch => {
+            if(+watch.id === +movies.id) {
+                count++
+            }
+        })
+        if(count === 0 && movies.length !== 0) {
+            dispatch(newWatchlist(movies))
+        } else {
+            console.log("gagal add");
+        }
+    }
+
     return (
         <div>
             <Navbar />
@@ -52,17 +71,24 @@ function MovieDetail() {
                         </div>
                         <p class="leading-relaxed mb-2
                         ">{detailMovies.overview}</p>
-                        <div class="flex">
-                        <button class="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">Trailer <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 my-1 mx-1" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
-                        </svg></button>
-                        <span onClick={() => setComment(!showComment)} class="flex ml-4 py-2 px-6 focus:outline-none cursor-pointer">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mx-1 text-yellow-600" viewBox="0 0 20 20" fill="currentColor">
-                            <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z" />
-                            <path d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z" />
-                        </svg>
-                            <p className='text-grey text-md py-1' >Comments</p>
-                        </span>
+                        <div class="flex mt-6">
+                            <button class="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">Trailer <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 my-1 mx-1" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+                            </svg></button>
+                            <span onClick={() => setComment(!showComment)} class="flex ml-4 py-2 px-6 focus:outline-none cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mx-1 text-yellow-600" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z" />
+                                <path d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z" />
+                            </svg>
+                                <p className='text-grey text-md py-1' >Comments</p>
+                            </span>
+
+                            <span onClick={() => addWatchlist(detailMovies)} class="flex py-2 px-6 focus:outline-none cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                            </svg>
+                            <p className='px-2'>Add Watchlist</p>
+                            </span>
                         </div>
                     </div>
                     </div>

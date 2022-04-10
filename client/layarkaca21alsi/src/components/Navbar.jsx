@@ -123,11 +123,13 @@ function Navbar() {
                         Upcoming
                     </span>
                 </li>
+                <Link to="/watchlist">
                 <li className='md:ml-8 text-xl md:my-0 my-7 lg:mr-36'>
                     <span className='text-rose-200 hover:text-white duration-500'>
                         Watchlist
                     </span>
                 </li>
+                </Link>
 
                 {/* <div class="relative mx-auto text-gray-600 lg:block">
                     <input

@@ -30,3 +30,15 @@
     background-color: var(--clr-neon);
     color: #fff
 }
+
+.main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 1rem;
+  border-radius: 3px;
+  box-shadow: 0.2px 4px 5px rgba(0, 0, 0, 0.1);
+  background-color: var(--secondary color);
+  position: relative;
+  overflow: hidden;
+}
