@@ -9,6 +9,7 @@ function MovieCard(props) {
     // const watchlist = useSelector(state => state.watchlist)
 
     const redirectMovieDetail = (id) => {
+        console.log(id);
         navigate(`/movies/details/${id}`)
     }
 
@@ -28,8 +29,8 @@ function MovieCard(props) {
 
 
     return (
-        <div className="each mb-10 m-2 shadow-lg border-gray-800 bg-gray-100 static">
-            <img onClick={() => redirectMovieDetail(props.movie.id)} className="w-full" src={`https://image.tmdb.org/t/p/w300/${props.movie.poster_path}`} alt="gambar" />            
+        <div className="each mb-10 m-2 shadow-lg border-gray-800 bg-gray-100 static cursor-pointer">
+            <img onClick={() => redirectMovieDetail(props.movie.id)} className="w-full " src={`https://image.tmdb.org/t/p/w300/${props.movie.poster_path}`} alt="gambar" />            
             <div className="info-box text-xs flex p-1 font-semibold text-gray-500 bg-gray-300">
             <span className="mr-1 p-1 px-2 font-bold">Views: {props.movie.vote_average}</span>
             <span className="mr-1 p-1 px-2 font-bold border-l border-gray-400">Like: {props.movie.popularity}</span>

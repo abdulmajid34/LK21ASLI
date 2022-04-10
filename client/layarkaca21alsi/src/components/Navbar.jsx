@@ -81,7 +81,8 @@
 
 // export default Navbar
 
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom'
 
 function Navbar() {
 
@@ -89,15 +90,17 @@ function Navbar() {
   return (
     <div className=' w-full sticky top-0 left-0'>
         <div className=' md:flex items-center justify-between py-4 px-7 md:px-10 bg-[#e50914]'>
+            <Link to='/home'>
             <div className='font-bold text-2xl cursor-pointer flex items-center text-white'>
                 LK21ASLI
             </div>
+            </Link>
 
             <div onClick={() => setOpen(!isOpen)} className='text-3xl absolute right-8 top-4 cursor-pointer md:hidden'>
             <ion-icon style={{color: 'white'}} name={isOpen ? 'close' : 'menu'}></ion-icon>
             </div>
 
-            <div onClick={() => setOpen(false)} className={ ` ${setOpen ? 'block' : 'hidden'} bg-opacity-50 z-[-1] transition-all duration-1000 ease-in-out fixed w-full h-full top-16 mt-[-5px] left-0`}></div>
+            {/* <div onClick={() => setOpen(false)} className={ ` ${setOpen ? 'block' : 'hidden'} bg-opacity-50 z-[-1] transition-all duration-1000 ease-in-out fixed w-full h-full top-16 mt-[-5px] left-0`}></div> */}
 
             <ul className={` md:flex-row md:flex md:items-center md:pb-0 pb-12 absolute md:static lg:bg-none bg-[#e50914] md:z-auto z-[-1] left-0 w-3/6 md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in ${isOpen ? 'left-0' : 'left-[-490px]'} `}>
                 <li className='md:ml-8 text-xl md:my-0 my-7'>
