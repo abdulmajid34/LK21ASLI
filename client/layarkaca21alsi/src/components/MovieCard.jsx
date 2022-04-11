@@ -25,7 +25,7 @@ function MovieCard(props) {
             <span className="mr-1 p-1 px-2 font-bold border-l border-gray-400">Rating: {props.movie.vote_count}</span>
             </div>
             <div className="desc p-4 text-gray-800">
-            <span className="description text-sm block py-2 border-gray-400 mb-2">{props.movie.title}</span>
+            <span className="description text-sm block py-2 font-bold border-gray-400 mb-2">{props.movie.title}</span>
             </div>
         </div>
     )

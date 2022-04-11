@@ -31,7 +31,8 @@ function Watchlist() {
     return (
         <div>
             <Navbar />
-            <div className='main'>
+            <div className='flex flex-wrap items-center px-9 py-7'>
+            {/* <div className='holder mx-auto w-10/12 grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4'> */}
                 {
                     watchlist?.map((list, idx) => <CardList key={idx} list={list} />)
                 }
