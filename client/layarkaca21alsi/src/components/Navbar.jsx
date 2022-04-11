@@ -124,7 +124,7 @@ function Navbar() {
                     </span>
                 </li>
                 <Link to="/watchlist">
-                <li className='md:ml-8 text-xl md:my-0 my-7 lg:mr-36'>
+                <li className='md:ml-8 text-xl md:my-0 my-7'>
                     <span className='text-rose-200 hover:text-white duration-500'>
                         Watchlist
                     </span>
