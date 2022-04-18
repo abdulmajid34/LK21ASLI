@@ -22,7 +22,7 @@ async function authentication(req, res, next) {
                 throw { name: 'please login first!'}
             }
         } else {
-            throw { name: 'invalid access_token!'}
+            throw { name: 'invalid access_token!'}               
         }
     }
     catch(err) {

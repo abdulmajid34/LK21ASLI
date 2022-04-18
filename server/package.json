@@ -21,7 +21,8 @@
     "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.3.3",
     "pg": "^8.6.0",
-    "sequelize": "^6.6.2"
+    "sequelize": "^6.6.2",
+    "socket.io": "^4.4.1"
   },
   "devDependencies": {
     "jest": "^27.5.1",

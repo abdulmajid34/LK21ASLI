@@ -1,0 +1,29 @@
+FROM node:lts-alpine3.15
+
+RUN npm install -g nodemon
+WORKDIR /app
+COPY package*.json ./
+# RUN apk --no-cache --virtual build-dependencies add 
+#     jpeg-dev \
+#     cairo-dev \
+#     giflib-dev \
+#     pango-dev \
+#     python3 \
+#     make \
+#     g++
+
+RUN npm install
+COPY . .
+
+ENV PORT "4000"
+ENV JWT_SECRET "lk21asli_key"
+
+# ENV NODE_ENV "production"
+# ENV VUE_APP_TITLE "Tajimingo"
+# ENV VUE_APP_I18N_LOCALE en
+# ENV VUE_APP_I18N_FALLBACK_LOCALE en
+# ENV VUE_APP_BASE_URL_API "https://tajimi-test.president-one-dev.com/ec/api/v1"
+
+# RUN npm run build
+
+CMD npm run dev -- --port=4000
