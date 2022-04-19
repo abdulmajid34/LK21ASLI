@@ -1,14 +1,17 @@
-const { Comment } = require("../models");
+const { Comment, User } = require("../models");
 
 class CommentController {
     static showAllComment(req, res, next) {
-        let movieId = req.params.id;
+        let movieId = req.params.movieId;        
         Comment.findAll({
+            // Attr: [['id']],
+            // include: User,
             where: {
                 movieId
             }
         })
-        .then((data) => {
+        .then((data) => {         
+            console.log(data, 'data');   
             res.status(200).json(data)
         })
         .catch((err) => {
@@ -17,7 +20,19 @@ class CommentController {
     }
     
     static addComment(req, res, next) {
-        
+        let newComment = {
+            message: req.body.message,
+            UserId: req.nowLogged.id,
+            movieId: req.params.id
+        }
+        Comment.create(newComment)
+        .then((response) => {
+            console.log(response, 'res');
+            res.status(201).json(response)
+        })
+        .catch((err) => {
+            next(err)
+        })
     }
 }
 
