@@ -14,7 +14,7 @@ services:
     ports:
       - 8001:4000
 
-# postgres database
+# postgres database services
   lk21asli-pgsql:
     image: postgres:alpine # set nama image docker yang akan dipakai
     container_name: lk21asli-pg # set nama container untuk digunakan 
@@ -38,9 +38,6 @@ services:
       - lk21asli-networks
     environment:
       - ADMINER_DEFAULT_SERVER=lk21asli-pgsql
-
-
-
 networks:
   lk21asli-networks:
     driver: bridge
