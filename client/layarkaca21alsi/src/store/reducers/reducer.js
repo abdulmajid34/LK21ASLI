@@ -4,7 +4,8 @@ import {
     SHOW_MOVIE_UPCOMING,
     SHOW_MOVIE_TOP_RATED,
     SEARCH_MOVIES,
-    SHOW_ADD_WATCHLIST
+    SHOW_ADD_WATCHLIST,
+    CHAT_COMMENT
 } from '../actions/actionType'
 
 const initialState = {
@@ -13,7 +14,8 @@ const initialState = {
     movie_upcoming: [],
     movie_top_rated: [],
     searchResult: [],
-    watchlist: []
+    watchlist: [],
+    chatComment: []
 }
 
 function reducer(state = initialState, action) {
@@ -21,6 +23,8 @@ function reducer(state = initialState, action) {
     switch (type) {
         case SEARCH_MOVIES:
             return { ...state, searchResult: payload }
+        case CHAT_COMMENT:
+            return { ...state, chatComment: payload }
         case SHOW_MOVIE_NOW_PLAYING:
             return { ...state, movie_now_playing: payload }
         case SHOW_MOVIE_POPULAR:

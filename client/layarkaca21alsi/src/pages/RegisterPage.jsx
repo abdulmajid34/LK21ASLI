@@ -11,7 +11,7 @@ import {
 } from 'react-hook-form'
 
 function RegisterPage() {
-  const BASE_URL = 'http://localhost:4000'
+  const BASE_URL = 'http://localhost:8001'
 
   const navigate = useNavigate()
 

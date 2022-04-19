@@ -82,7 +82,7 @@ function MovieDetail() {
                             </svg> */}
                             </button>
 
-                            <button class="btn-comment mt-4">
+                            <button onClick={() => setComment(!showComment)} class="btn-comment mt-4">
                                 <div class="icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" class=" svg-comment text-red-600" viewBox="0 0 20 20" fill="currentColor" height="16" width="16" >
                                 <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z" />

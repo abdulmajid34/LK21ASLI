@@ -1,0 +1,40 @@
+#NOTES
+services:
+  #nodejs backend services
+  lk21asli-backend: 
+    image: lk21asli:alpine3.15  
+    container_name: lk21asli-backend
+    restart: unless-stopped #
+    working_dir: /app
+    tty: true
+    volumes:
+      - ./server/:/app #
+    networks:
+      - lk21asli-networks
+    ports:
+      - 8100:4000
+
+# postgres database
+  lk21asli-pgsql:
+    image: postgres:alpine
+    container_name: lk21asli-pg
+    restart: unless-stopped #
+    tty: true
+    volumes:
+      - lk21asli-pg-db:/var/lib/postgres/data
+    networks: 
+      - lk21asli-networks
+    environment:
+      - POSTGRES_USER="postgres"
+      - POSTGRES_DB="lk21asli-db"
+      - POSTGRES_PASSWORD="0d4y3xpl01t"
+networks:
+  lk21asli-networks:
+    driver: bridge
+volumes:
+  lk21asli-pg-db:
+    driver: local
+
+# di sebelah kiri itu adalah services yang di define
+# sedangkan yang disebelah kanan adalah container yang dituju
+# docker-compose up

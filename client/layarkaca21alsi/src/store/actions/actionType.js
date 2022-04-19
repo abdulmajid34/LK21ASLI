@@ -6,5 +6,6 @@ export const SEARCH_MOVIES = 'search/setSearch';
 export const SHOW_WATCHLIST = 'watchlist/set_watchlist';
 export const SHOW_ADD_WATCHLIST = 'add_watchlist/set_add_watchlist';
 export const SHOW_DELETE_WATCHLIST = 'delete_watchlist/set_delete_watchlist';
+export const CHAT_COMMENT = 'chatComment/setChatComment';
 export const SHOW_ERROR = 'error/set_error';
 export const SHOW_LOADING = 'loading/set_loading';

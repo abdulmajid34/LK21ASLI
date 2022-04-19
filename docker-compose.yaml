@@ -1,0 +1,53 @@
+#NOTES
+services:
+  #nodejs backend services
+  lk21asli-backend: 
+    image: lk21asli:alpine3.15  
+    container_name: lk21asli-backend
+    restart: unless-stopped # untuk ngerestart apabila ada keadaan error terjadi pada saat build services
+    working_dir: /app
+    tty: true
+    volumes:
+      - ./server/:/app #
+    networks:
+      - lk21asli-networks
+    ports:
+      - 8001:4000
+
+# postgres database
+  lk21asli-pgsql:
+    image: postgres:alpine # set nama image docker yang akan dipakai
+    container_name: lk21asli-pg # set nama container untuk digunakan 
+    restart: unless-stopped # untuk ngerestart apabila ada keadaan error terjadi pada saat build services
+    tty: true # 
+    volumes: # 
+      - lk21asli-pg-db:/var/lib/postgres/data # set ini untuk mengarahkan ke database postgres
+    networks: 
+      - lk21asli-networks
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_DB: "layarkaca21_ASLI"
+      POSTGRES_PASSWORD: "0d4y3xpl01t"
+# adminer
+  lk21asli-adminer:
+    image: adminer
+    container_name: lk21asli-adminer
+    ports:
+      - "8002:8080"
+    networks: 
+      - lk21asli-networks
+    environment:
+      - ADMINER_DEFAULT_SERVER=lk21asli-pgsql
+
+
+
+networks:
+  lk21asli-networks:
+    driver: bridge
+volumes:
+  lk21asli-pg-db:
+    driver: local
+
+# di sebelah kiri itu adalah services yang di define
+# sedangkan yang disebelah kanan adalah container yang dituju
+# docker-compose up
