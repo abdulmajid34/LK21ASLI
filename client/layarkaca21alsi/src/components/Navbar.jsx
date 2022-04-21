@@ -88,7 +88,7 @@ function Navbar() {
 
     const [isOpen, setOpen] = useState(false);
   return (
-    <div className=' w-full sticky top-0 left-0'>
+    <div className=' w-full relative lg:sticky top-0 left-0'>
         <div className=' md:flex items-center justify-between py-4 px-7 md:px-10 bg-[#e50914]'>
             <Link to='/home'>
             <div className='font-bold text-2xl cursor-pointer flex items-center text-white'>

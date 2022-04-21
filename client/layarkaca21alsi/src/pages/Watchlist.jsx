@@ -9,7 +9,7 @@ function Watchlist() {
     const fetchWatchlist = () => {
         return axios({
             method: 'GET',
-            url: 'http://localhost:4000/movies/watchList',
+            url: 'http://localhost:8001/movies/watchList',
             headers: {
                 access_token: localStorage.access_token
             }
