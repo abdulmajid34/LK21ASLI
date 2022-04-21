@@ -9,7 +9,7 @@ import {
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
-const BASE_URL = 'http://localhost:4000';
+const BASE_URL = 'http://localhost:8001';
 
 export function loading(payload) {
     return { type: SHOW_LOADING, payload }

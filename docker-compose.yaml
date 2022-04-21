@@ -7,12 +7,33 @@ services:
     restart: unless-stopped # untuk ngerestart apabila ada keadaan error terjadi pada saat build services
     working_dir: /app
     tty: true
+    # depends_on: #NOTES: dibuat untuk engine yang sedang berjalan ini berjalan secara bergantian atau antri
+    #   - serviceName
     volumes:
-      - ./server/:/app #
+      - ./server/:/app # adalah komunikasi dari server ke container atau bahkan dari container ke server, 
     networks:
       - lk21asli-networks
     ports:
       - 8001:4000
+
+# lk21asli-backend: 
+# build: 
+# context: <nama docker build di directory FE>
+# dockerfile: <nama directory file dockerfile di FE>
+# host: <optional>
+#     image: lk21asli:alpine3.15  
+#     container_name: lk21asli-backend
+#     restart: unless-stopped # untuk ngerestart apabila ada keadaan error terjadi pada saat build services
+#     working_dir: /app
+#     tty: true
+#     # depends_on: #NOTES: dibuat untuk engine yang sedang berjalan ini berjalan secara bergantian atau antri
+#     #   - serviceName
+#     volumes:
+#       - ./server/:/app # adalah komunikasi dari server ke container atau bahkan dari container ke server, 
+#     networks:
+#       - lk21asli-networks
+#     ports:
+#       - 8001:4000
 
 # postgres database services
   lk21asli-pgsql:
@@ -41,7 +62,7 @@ services:
 networks:
   lk21asli-networks:
     driver: bridge
-volumes:
+volumes: # adalah bertugas untuk ngemounting
   lk21asli-pg-db:
     driver: local
 

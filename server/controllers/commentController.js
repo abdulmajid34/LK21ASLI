@@ -4,8 +4,6 @@ class CommentController {
     static showAllComment(req, res, next) {
         let movieId = req.params.movieId;        
         Comment.findAll({
-            // Attr: [['id']],
-            // include: User,
             where: {
                 movieId
             }
@@ -23,7 +21,7 @@ class CommentController {
         let newComment = {
             message: req.body.message,
             UserId: req.nowLogged.id,
-            movieId: req.params.id
+            movieId: +req.params.movieId
         }
         Comment.create(newComment)
         .then((response) => {
