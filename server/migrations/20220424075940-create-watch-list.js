@@ -23,11 +23,11 @@ module.exports = {
       poster_path: {
         type: Sequelize.TEXT
       },
-      overview: {
-        type: Sequelize.TEXT
-      },
       popularity: {
         type: Sequelize.FLOAT
+      },
+      overview: {
+        type: Sequelize.TEXT
       },
       release_date: {
         type: Sequelize.TEXT

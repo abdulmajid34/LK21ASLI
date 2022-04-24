@@ -2,10 +2,10 @@ const { Comment, User } = require("../models");
 
 class CommentController {
     static showAllComment(req, res, next) {
-        let movieId = req.params.movieId;        
+        let MovieId = req.params.MovieId;        
         Comment.findAll({
             where: {
-                movieId
+                MovieId
             }
         })
         .then((data) => {         
@@ -21,8 +21,9 @@ class CommentController {
         let newComment = {
             message: req.body.message,
             UserId: req.nowLogged.id,
-            movieId: +req.params.movieId
+            MovieId: parseInt(req.body.MovieId)
         }
+        console.log(newComment, 'comment');
         Comment.create(newComment)
         .then((response) => {
             console.log(response, 'res');
