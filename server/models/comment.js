@@ -15,7 +15,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Comment.init({
-    message: DataTypes.TEXT
+    message: DataTypes.TEXT,
+    MovieId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Comment',
