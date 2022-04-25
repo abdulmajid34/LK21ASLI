@@ -2,7 +2,21 @@ import React from 'react'
 
 function Loading() {
   return (
-    <div>Loading</div>
+    <div>
+      <div class="lds-ring">
+        <div>
+        </div>
+        
+        <div>
+        </div>
+        
+        <div>
+        </div>
+        
+        <div>
+        </div>
+      </div>
+    </div>
   )
 }
 

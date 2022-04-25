@@ -3,11 +3,16 @@ import Navbar from '../components/Navbar'
 import axios from 'axios'
 import CardList from '../components/CardList'
 import NoDataFound from '../assets/noData.png'
+import Loading from './Loading'
+import Error from './Error'
 
 function Watchlist() {
     const [watchlist, setWatchlist] = useState([])
+    const [loading, setLoading] = useState(false)
+    const [error, setError] = useState(null)
 
     const fetchWatchlist = () => {
+        setLoading(true)
         return axios({
             method: 'GET',
             url: 'http://localhost:8001/movies/watchList',
@@ -15,12 +20,15 @@ function Watchlist() {
                 access_token: localStorage.access_token
             }
         })
-        .then(({ data }) => {
-            console.log(data, 'test data');
+        .then(({ data }) => {            
             return data
         })
         .catch((err) => {
+            setError(err)
             return err
+        })
+        .finally((_) => {
+            setLoading(false)
         })
     }
 
@@ -29,6 +37,13 @@ function Watchlist() {
             setWatchlist(res)
         })
     }, [])
+
+    if(loading) {
+        return <Loading />
+    }
+    if(error) {
+        return <Error />
+    }
     return (
         <div>
             <Navbar />
