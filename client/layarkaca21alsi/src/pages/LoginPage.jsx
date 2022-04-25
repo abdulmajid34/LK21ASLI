@@ -16,7 +16,7 @@ function LoginPage() {
   const { login } = useAuth();
   const { state } = useLocation();
 
-  const BASE_URL = 'http://localhost:4000'
+  const BASE_URL = 'http://localhost:8001'
   // const BASE_URL = process.env.PORT
   const { 
     register,

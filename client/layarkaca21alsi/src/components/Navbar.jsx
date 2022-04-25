@@ -82,9 +82,33 @@
 // export default Navbar
 
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import Swal from 'sweetalert2';
 
 function Navbar() {
+    const navigate = useNavigate()
+
+    const handleLogout = () => {
+        Swal.fire({
+			title: 'Are you sure?',
+			text: "You won't be able to revert this!",
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: 'Yes, Logout'
+		  }).then((result) => {
+			if (result.isConfirmed) {
+				localStorage.clear()
+				navigate('/')
+			  Swal.fire(
+				'Logout!',
+				'See You Again!',
+				'success'
+			  )
+			}
+		})
+    }
 
     const [isOpen, setOpen] = useState(false);
   return (
@@ -159,8 +183,8 @@ function Navbar() {
                         Hai, {localStorage.getItem('username')}
                     </span>
                 </li>
-                <li className='md:ml-8 text-xl md:my-0 my-7'>
-                    <span className='text-rose-200 hover:text-white duration-500'>
+                <li className='md:ml-8 text-xl md:my-0 my-7 cursor-pointer'>
+                    <span onClick={handleLogout} className='text-rose-200 hover:text-white duration-500'>
                         Logout
                     </span>
                 </li>

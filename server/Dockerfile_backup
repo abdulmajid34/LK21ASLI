@@ -1,0 +1,48 @@
+#==========================================================
+# Node JS => Engine yang digunakan
+# NOTES: FROM adalah Base image atau basis images 
+#==========================================================
+FROM node:lts-alpine3.15
+#==========================================================
+
+# OPTIONAL 
+#==========================================================
+RUN npm install -g nodemon
+#==========================================================
+
+# NOTES: working directory saat di dalam container
+#==========================================================
+WORKDIR /app
+#==========================================================
+
+# copy package json 
+#==========================================================
+COPY package*json ./
+#==========================================================
+
+# OPTIONAL
+#==========================================================
+ENV PORT=4000
+#==========================================================
+
+# install dependencys
+#==========================================================
+RUN npm install && npm cache clean --force
+
+# NOTES: mengcopy semua working directory host ( resource ) ke workdir container
+#==========================================================
+COPY . .
+
+# NOTES: expose container port
+#==========================================================
+EXPOSE 4000
+
+# NOTES: running container
+#==========================================================
+CMD npm run dev
+
+# docker build -t <nama image>:<name tag> . (  )
+# docker rm <nama container atau id container>
+# docker exec -it <nama container> /bin/sh -d
+# docker ps -a
+# docker-compose.yaml adalah untuk menjalankan multiple container secara bersamaan

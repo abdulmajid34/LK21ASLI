@@ -17,8 +17,8 @@ module.exports = (sequelize, DataTypes) => {
   WatchList.init({
     title: DataTypes.TEXT,
     poster_path: DataTypes.TEXT,
-    overview: DataTypes.TEXT,
     popularity: DataTypes.FLOAT,
+    overview: DataTypes.TEXT,
     release_date: DataTypes.TEXT
   }, {
     sequelize,

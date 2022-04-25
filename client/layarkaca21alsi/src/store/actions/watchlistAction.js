@@ -7,9 +7,9 @@ import {
 } from './actionType.js';
 
 import axios from 'axios';
-import Swal from 'sweetalert2';
+import Swal from 'sweetalert2'
 
-const BASE_URL = 'http://localhost:4000';
+const BASE_URL = 'http://localhost:8001';
 
 export function loading(payload) {
     return { type: SHOW_LOADING, payload }
@@ -40,10 +40,21 @@ export function newWatchlist(data) {
             }
         })
         .then((res) => {
-            console.log(res, 'berhasil fetch');
+            Swal.fire({
+                icon: 'success',
+                title: 'successfully added movies to your watchlist',
+                showConfirmButton: false,
+                timer: 1500
+            })
         })
         .catch((err) => {
             dispatch(error(err))
+            Swal.fire({
+                icon: 'error',
+                title: err.message,
+                showConfirmButton: false,
+                timer: 1500
+            })
         })
         .finally((_) => {
             dispatch(loading(false))
