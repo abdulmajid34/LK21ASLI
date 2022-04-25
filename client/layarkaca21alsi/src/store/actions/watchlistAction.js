@@ -25,6 +25,7 @@ export function watchlist(payload) {
 
 export function newWatchlist(data) {
     return (dispatch) => {
+        dispatch(loading(true))
         axios({
             method: 'POST',
             url: `${BASE_URL}/movies/watchList`,

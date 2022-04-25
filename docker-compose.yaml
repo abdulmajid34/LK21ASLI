@@ -1,5 +1,6 @@
 #NOTES
 services:
+  #nodejs frontend services
   #nodejs backend services
   lk21asli-backend: 
     image: lk21asli:alpine3.15  

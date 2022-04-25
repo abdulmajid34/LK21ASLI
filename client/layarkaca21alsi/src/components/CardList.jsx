@@ -52,9 +52,9 @@ function CardList(props) {
     return (
         <>
             <div className='w-80 mt-4 h-5/6 group transition duration-500 ease-in-out hover:scale-110 relative'>
-                <div className=' px-4 w-full h-full'>
+                <div className=' my-7 px-4 w-full h-full'>
                     <img className=' object-cover rounded-2xl' src={`https://image.tmdb.org/t/p/w500/${props.list.poster_path}`} alt="gambar" />
-                    <div className=' absolute opacity-0 px-4 group-hover:opacity-100 w-full left-0 right-0 bottom-0 h-2/6 bg-white transition duration-500 bg-opacity-75 rounded-xl'>
+                    <div className=' top-72 absolute opacity-0 px-4 group-hover:opacity-100 w-full left-0 right-0 bottom-0 h-2/6 bg-white transition duration-500 bg-opacity-75 rounded-xl'>
                         <div className="w-full h-full flex flex-col justify-start overflow-y-scroll items-start p-4">
                             <div className=' py-2'>
                                 <span className=' font-bold'>{props.list.title}</span>
@@ -81,7 +81,7 @@ function CardList(props) {
                             
                         </div>
                     </div>
-                        <div className=' absolute right-4 top-3 flex flex-row space-x-2 transition-all duration-100'>
+                        <div className=' absolute right-4 top-8 flex flex-row space-x-2 transition-all duration-100'>
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 className="h-8 w-8 text-white hover:text-red-600 bg-transparent cursor-pointer bg-opacity-70 8ove8:text-red-600"
