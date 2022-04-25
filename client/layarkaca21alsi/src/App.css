@@ -189,7 +189,7 @@
 
 /* From uiverse.io by @adamgiebl */
 .cssbuttons-io-button {
- background: #A370F0;
+ background: #ff013c;
  color: white;
  font-family: inherit;
  padding: 0.35em;
@@ -201,7 +201,7 @@
  letter-spacing: 0.05em;
  display: flex;
  align-items: center;
- box-shadow: inset 0 0 1.6em -0.6em #714da6;
+ box-shadow: inset 0 0 1.6em -0.6em #ff013c;
  overflow: hidden;
  position: relative;
  height: 2.8em;
@@ -220,7 +220,7 @@
  height: 2.2em;
  width: 2.2em;
  border-radius: 0.7em;
- box-shadow: 0.1em 0.1em 0.6em 0.2em #7b52b9;
+ box-shadow: 0.1em 0.1em 0.6em 0.2em #ff013c;
  right: 0.3em;
  transition: all 0.3s;
 }
@@ -232,7 +232,7 @@
 .cssbuttons-io-button .icons .svg-love {
  width: 1.1em;
  transition: transform 0.3s;
- color: #7b52b9;
+ color: #e50914;
 }
 
 .cssbuttons-io-button:hover .icons .svg-love {

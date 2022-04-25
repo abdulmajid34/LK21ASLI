@@ -1,15 +1,57 @@
-import React from 'react'
+import React from 'react';
+import axios from 'axios';
+import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
+
+const BASE_URL = 'http://localhost:8001';
 
 function CardList(props) {
+    const navigate = useNavigate()
     const handleShowAll = () => {
 
     }
-    const handleDeleteWatchList = () => {
-        
+    const handleDeleteWatchList = (id) => {
+        return axios({
+            method: "DELETE",
+            url: `${BASE_URL}/movies/watchList/${id}`,
+            headers: {
+                access_token: localStorage.access_token
+            },
+        })
+        .then((response) => {
+            Swal.fire({
+				title: 'Are you sure?',
+				text: 'You will not be able to return this Movies!',
+				icon: 'warning',
+				showCancelButton: true,
+				confirmButtonColor: '#3085d6',
+				cancelButtonColor: '#d33',
+				confirmButtonText: 'delete',
+			}).then((result) => {
+                navigate('/home')
+				if (result.isConfirmed) {
+					Swal.fire(
+						'Deleted!',
+						'Your card has been deleted successfully',
+						'success'
+					)
+				}
+                return response
+			})
+        })
+        .catch((err) => {
+            console.log(err);
+            Swal.fire({
+                icon: 'error',
+                title: err.message,
+                showConfirmButton: false
+            })
+            return err
+        })
     }
     return (
         <>
-            <div className='w-80 mt-4 h-5/6 group transition duration-500 ease-in-out hover:scale-110 static'>
+            <div className='w-80 mt-4 h-5/6 group transition duration-500 ease-in-out hover:scale-110 relative'>
                 <div className=' px-4 w-full h-full'>
                     <img className=' object-cover rounded-2xl' src={`https://image.tmdb.org/t/p/w500/${props.list.poster_path}`} alt="gambar" />
                     <div className=' absolute opacity-0 px-4 group-hover:opacity-100 w-full left-0 right-0 bottom-0 h-2/6 bg-white transition duration-500 bg-opacity-75 rounded-xl'>
@@ -39,6 +81,25 @@ function CardList(props) {
                             
                         </div>
                     </div>
+                        <div className=' absolute right-4 top-3 flex flex-row space-x-2 transition-all duration-100'>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="h-8 w-8 text-white hover:text-red-600 bg-transparent cursor-pointer bg-opacity-70 8ove8:text-red-600"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                onClick={() => {
+                                    handleDeleteWatchList(props.list.id)
+                                }}
+                            >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                            />
+                        </svg>
+                        </div>
                 </div>
             </div>
         </>

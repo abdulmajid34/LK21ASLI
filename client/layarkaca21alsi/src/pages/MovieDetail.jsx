@@ -8,6 +8,7 @@ import Comments from '../components/Comments';
 import { useSelector, useDispatch } from 'react-redux';
 import { newWatchlist } from '../store/actions/watchlistAction';
 import Videos from '../components/Videos';
+import Swal from 'sweetalert2'
 
 function MovieDetail() {
     const dispatch = useDispatch()
@@ -35,7 +36,10 @@ function MovieDetail() {
         if(count === 0 && movies.length !== 0) {
             dispatch(newWatchlist(movies))
         } else {
-            console.log("gagal add");
+            Swal.fire({
+                icon: 'error',
+                title: 'this movie already in your watchlist',
+            })
         }
     }
 
@@ -82,7 +86,7 @@ function MovieDetail() {
                             </svg> */}
                             </button>
 
-                            <button onClick={() => setComment(!showComment)} class=" btn-comment mt-4">
+                            {/* <button onClick={() => setComment(!showComment)} class=" btn-comment mt-4">
                                 <div class="icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" class=" svg-comment text-red-600" viewBox="0 0 20 20" fill="currentColor" height="16" width="16" >
                                 <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z" />
@@ -90,11 +94,13 @@ function MovieDetail() {
                                 </svg>
                                 </div>
                                 <p>Comment</p>
-                            </button>                    
+                            </button>                     */}
 
                             <button onClick={() => addWatchlist(detailMovies)} class=" cssbuttons-io-button">Add Watchlist
                                 <div class="icons">
-                                    <svg className='svg-love' height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                                </svg>
                                 </div>
                             </button>
                         </div>
