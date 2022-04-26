@@ -5,7 +5,9 @@ import {
     SHOW_MOVIE_TOP_RATED,
     SEARCH_MOVIES,
     SHOW_ADD_WATCHLIST,
-    CHAT_COMMENT
+    CHAT_COMMENT,
+    SHOW_LOADING,
+    SHOW_ERROR
 } from '../actions/actionType'
 
 const initialState = {
@@ -15,7 +17,9 @@ const initialState = {
     movie_top_rated: [],
     searchResult: [],
     watchlist: [],
-    chatComment: []
+    chatComment: [],
+    error: null,
+    loading: false
 }
 
 function reducer(state = initialState, action) {
@@ -35,6 +39,10 @@ function reducer(state = initialState, action) {
             return { ...state, movie_top_rated: payload }
         case SHOW_ADD_WATCHLIST:
             return { ...state, watchlist: state.watchlist.concat(payload)}
+        case SHOW_LOADING:
+            return { ...state, loading: payload }
+        case SHOW_ERROR:
+            return { ...state, error: payload }
         default:
             return state
     }

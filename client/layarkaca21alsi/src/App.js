@@ -13,6 +13,7 @@ import HomePage from './pages/HomePage';
 import useAuth from './useAuth';
 import MovieDetail from './pages/MovieDetail';
 import Watchlist from './pages/Watchlist';
+import MovieSearch from './pages/MovieSearch';
 
 function RequireAuth({ children }) {
   const { authed } = useAuth()
@@ -37,11 +38,17 @@ function App() {
           <MovieDetail />
         </RequireAuth>
       } />
+      <Route path='/movies/search' element={
+        <RequireAuth>
+          <MovieSearch />
+        </RequireAuth>
+      } />
       <Route path='/watchlist' element={
         <RequireAuth>
           <Watchlist />
         </RequireAuth>
       } />
+      
     </Routes>
   )
 }
