@@ -1,7 +1,7 @@
 import {
-    SHOW_WATCHLIST,
+    // SHOW_WATCHLIST,
     SHOW_ADD_WATCHLIST,
-    SHOW_DELETE_WATCHLIST,
+    // SHOW_DELETE_WATCHLIST,
     SHOW_ERROR,
     SHOW_LOADING
 } from './actionType.js';
