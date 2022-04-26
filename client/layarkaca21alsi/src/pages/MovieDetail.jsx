@@ -4,7 +4,8 @@ import { useParams } from 'react-router-dom';
 import useFetch from '../hooks/useFetch';
 import Loading from './Loading';
 import Error from './Error';
-import Comments from '../components/Comments';
+import imageNotAvailable from '../assets/imgNotAvailabel.png'
+// import Comments from '../components/Comments';
 import { useSelector, useDispatch } from 'react-redux';
 import { newWatchlist } from '../store/actions/watchlistAction';
 import Videos from '../components/Videos';
@@ -13,7 +14,7 @@ import Swal from 'sweetalert2'
 function MovieDetail() {
     const dispatch = useDispatch()
     const { id } = useParams();
-    const [showComment, setComment] = useState(false);
+    // const [showComment, setComment] = useState(false);
     const [showModal, setShowModal] = useState(false);
     const [detailMovies, loading, error] = useFetch(`https://api.themoviedb.org/3/movie/${id}?api_key=88bd736dd382b7b9688a1d6eaba2b7cc&language=en-US`)
     const [videos] = useFetch(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=88bd736dd382b7b9688a1d6eaba2b7cc&language=en-US`)
@@ -49,7 +50,14 @@ function MovieDetail() {
             <section class="text-gray-700 body-font overflow-hidden bg-white">
                 <div class="container px-5 py-24 mx-auto">
                     <div class="lg:w-4/5 mx-auto flex flex-wrap">
-                    <img alt="ecommerce" class="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200" src={`https://image.tmdb.org/t/p/w500/${detailMovies.poster_path}`} />
+                        {
+                            detailMovies.poster_path === null ? (
+                                <img class="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200" src={imageNotAvailable} alt='imageNotFound' />
+                            ) : (
+                                <img alt='imageNotFound' class="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200" src={`https://image.tmdb.org/t/p/w500/${detailMovies.poster_path}`} />
+                            )
+                        }
+                    
                     <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
                         <h2 class="text-sm title-font text-gray-500 tracking-widest">FILM</h2>
                         <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">{detailMovies.title}</h1>
@@ -106,11 +114,11 @@ function MovieDetail() {
                         </div>
                     </div>
                     </div>
-                    {
+                    {/* {
                         showComment ? (
                             <Comments />
                         ) : null
-                    }
+                    } */}
                 </div>
                 {
                     showModal ? (

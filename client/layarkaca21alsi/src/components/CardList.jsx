@@ -2,14 +2,15 @@ import React from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import imageNotAvailabel from '../assets/imgNotAvailabel.png'
 
 const BASE_URL = 'http://localhost:8001';
 
 function CardList(props) {
     const navigate = useNavigate()
-    const handleShowAll = () => {
+    // const handleShowAll = () => {
 
-    }
+    // }
     const handleDeleteWatchList = (id) => {
         return axios({
             method: "DELETE",
@@ -53,7 +54,13 @@ function CardList(props) {
         <>
             <div className='w-80 mt-4 h-5/6 group transition duration-500 ease-in-out hover:scale-110 relative'>
                 <div className=' my-7 px-4 w-full h-full'>
-                    <img className=' object-cover rounded-2xl' src={`https://image.tmdb.org/t/p/w500/${props.list.poster_path}`} alt="gambar" />
+                    {
+                        props.list.poster_path === null ? (
+                            <img className=' object-cover mb-48 border-4 text-black  rounded-2xl' src={imageNotAvailabel} alt="imageNotAvailabel" />
+                        ) : (
+                            <img className=' object-cover rounded-2xl' src={`https://image.tmdb.org/t/p/w500/${props.list.poster_path}`} alt="imageNotAvailable" />
+                        )
+                    }
                     <div className=' top-72 absolute opacity-0 px-4 group-hover:opacity-100 w-full left-0 right-0 bottom-0 h-2/6 bg-white transition duration-500 bg-opacity-75 rounded-xl'>
                         <div className="w-full h-full flex flex-col justify-start overflow-y-scroll items-start p-4">
                             <div className=' py-2'>

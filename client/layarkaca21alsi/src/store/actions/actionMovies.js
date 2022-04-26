@@ -7,6 +7,7 @@ import {
     SHOW_MOVIE_UPCOMING,
     SEARCH_MOVIES
 } from "./actionType";
+import axios from 'axios'
 
 export function now_playing(payload) {
     return { type: SHOW_MOVIE_NOW_PLAYING, payload }
@@ -69,6 +70,7 @@ export function fetch_now_playing(page) {
         })
     }
 }
+
 
 export function fetch_popular(page) {
     return (dispatch) => {
