@@ -39,7 +39,7 @@ function reducer(state = initialState, action) {
             return { ...state, movie_top_rated: payload }
         case SHOW_ADD_WATCHLIST:
             return { ...state, watchlist: state.watchlist.concat(payload)}
-        case SHOW_LOADING:
+        case SHOW_LOADING:            
             return { ...state, loading: payload }
         case SHOW_ERROR:
             return { ...state, error: payload }
