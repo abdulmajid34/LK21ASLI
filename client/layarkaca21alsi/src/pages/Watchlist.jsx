@@ -9,7 +9,7 @@ import Error from './Error'
 function Watchlist() {
     const [watchlist, setWatchlist] = useState([])
     const [loading, setLoading] = useState(false)
-    const [error, setError] = useState(null)
+    const [error, setError] = useState(null)    
 
     const fetchWatchlist = () => {
         setLoading(true)
@@ -38,7 +38,7 @@ function Watchlist() {
         })
     }, [])
 
-    if(loading) {
+    if(loading) {        
         return <Loading />
     }
     if(error) {
